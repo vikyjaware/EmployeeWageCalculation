@@ -9,10 +9,11 @@ namespace EmployeeWageComputation
     public class WageComputation
     {
         const int EMP_ABSENT = 0, EMP_PRESENT = 1,EMP_PARTTIME_PRESENT=2, WAGE_PER_HR = 20, FULL_DAY_HR = 8, PARTTIME_HR = 4, TOTAL_WORKING_DAYS = 20 ;
-        int EmpHrs = 0, EmpTotalWage = 0, i = 0;
+        int EmpHrs = 0, EmpTotalWage = 0, i = 0, MAX_WORKING_HRS = 100;
         public void EmpPartTimeWage()
         {
-            for (i = 0; i < TOTAL_WORKING_DAYS; i++)
+
+            for (i = 0; i < TOTAL_WORKING_DAYS && this.EmpHrs <= MAX_WORKING_HRS ; i++)
             {
             Random rand = new Random();
             int EmpCheck = rand.Next(0, 3);
