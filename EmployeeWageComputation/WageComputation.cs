@@ -9,28 +9,32 @@ namespace EmployeeWageComputation
     public class WageComputation
     {
         const int EMP_ABSENT = 0, EMP_PRESENT = 1,EMP_PARTTIME_PRESENT=2, WAGE_PER_HR = 20, FULL_DAY_HR = 8, PARTTIME_HR = 4 ;
-
+        int EmpHrs = 0, EmpTotalWage = 0;
         public void EmpPartTimeWage()
         {
             Random rand = new Random();
             int EmpCheck = rand.Next(0, 3);
-            if (EmpCheck == 0)
+            switch (EmpCheck)
             {
-                Console.WriteLine("Employee's daily wage is Rs 0 as employee is absent ");
-            }
 
-            if (EmpCheck == 1)
+                case EMP_PRESENT:
+                    this.EmpHrs += FULL_DAY_HR;
+                    Console.WriteLine("Employee is Full time present");
+                    break;
+            
+                case EMP_PARTTIME_PRESENT:
+                    this.EmpHrs += PARTTIME_HR;
+                    Console.WriteLine("Employee is part time present");
+                    break;
 
-            {
-                int DailyEmpWage = FULL_DAY_HR * WAGE_PER_HR;
-                Console.WriteLine("Employee's daily wage is Rs " + DailyEmpWage);
+                default:
+                    Console.WriteLine("Emplyoee is absent");
+                    this.EmpHrs += 0;
+                    break;
             }
-            if (EmpCheck == 2)
-            {
-                int DailyEmpWage = PARTTIME_HR * WAGE_PER_HR;
-                Console.WriteLine("Employee's daily part time wage is Rs " + DailyEmpWage);
-            }
-
+            this.EmpTotalWage = EmpHrs * WAGE_PER_HR;
+            Console.WriteLine("Employee's total wage is ");
+            Console.WriteLine(this.EmpTotalWage);
         }
     }
 }
