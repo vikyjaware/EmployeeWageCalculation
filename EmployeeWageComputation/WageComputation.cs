@@ -33,7 +33,7 @@ namespace EmployeeWageComputation
                 }
             }
             this.EmpTotalWage = EmpHrs * WAGE_PER_HR;
-            Console.WriteLine("Employee's total wage is ");
+            Console.WriteLine(" Employee's total wage is ");
             Console.WriteLine(this.EmpTotalWage);
         }
     }
