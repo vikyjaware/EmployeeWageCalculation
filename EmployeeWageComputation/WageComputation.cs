@@ -8,33 +8,41 @@ namespace EmployeeWageComputation
 {
     public class WageComputation
     {
-        const int EMP_ABSENT = 0, EMP_PRESENT = 1,EMP_PARTTIME_PRESENT=2, WAGE_PER_HR = 20, FULL_DAY_HR = 8, PARTTIME_HR = 4, TOTAL_WORKING_DAYS = 20 ;
-        int EmpHrs = 0, EmpTotalWage = 0, i = 0, MAX_WORKING_HRS = 100;
-        public void EmpPartTimeWage()
+        const int EMP_ABSENT = 0, EMP_PRESENT = 1,EMP_PARTTIME_PRESENT=2,FULL_DAY_HR = 8, PARTTIME_HR = 4;
+        string Company;
+        int TotalWorkingHrs=0, EmpTotalWage=0, WagePerHrs,TotalWorkingDays,MaxWorkingHrs;
+        public void CompanyEmpWage()
         {
+            Console.WriteLine("Enter company name");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter wage per hrs ");
+            WagePerHrs = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter total number of working days ");
+            TotalWorkingDays  =Convert.ToInt32 (Console.ReadLine());
+            Console.WriteLine("Enter maximum working hrs per month");
+            MaxWorkingHrs = Convert.ToInt32(Console.ReadLine());
 
-            for (i = 0; i < TOTAL_WORKING_DAYS && this.EmpHrs <= MAX_WORKING_HRS ; i++)
+            for (int i = 0; i < TotalWorkingDays && this.TotalWorkingHrs <= MaxWorkingHrs ; i++)
             {
             Random rand = new Random();
             int EmpCheck = rand.Next(0, 3);
                 switch (EmpCheck)
                 {
                     case EMP_PRESENT:
-                        this.EmpHrs += FULL_DAY_HR;
+                        this.TotalWorkingHrs += FULL_DAY_HR;
                         break;
 
                     case EMP_PARTTIME_PRESENT:
-                        this.EmpHrs += PARTTIME_HR;
+                        this.TotalWorkingHrs += PARTTIME_HR;
                         break;
 
                     default:
-                        this.EmpHrs += 0;
+                        this.TotalWorkingHrs += 0;
                         break;
                 }
             }
-            this.EmpTotalWage = EmpHrs * WAGE_PER_HR;
-            Console.WriteLine(" Employee's total wage is ");
-            Console.WriteLine(this.EmpTotalWage);
+            EmpTotalWage = TotalWorkingHrs * WagePerHrs;
+            Console.WriteLine(" Employee's total wage is "+ EmpTotalWage);
         }
     }
 }

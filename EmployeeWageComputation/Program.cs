@@ -4,4 +4,5 @@ using EmployeeWageComputation;
 Console.WriteLine(" Welcome to employee wage computation program!\n");
 
 WageComputation employee = new WageComputation();
-employee.EmpPartTimeWage();
+employee.CompanyEmpWage();
+
