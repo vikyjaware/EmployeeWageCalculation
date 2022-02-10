@@ -13,36 +13,43 @@ namespace EmployeeWageComputation
         int TotalWorkingHrs=0, EmpTotalWage=0, WagePerHrs,TotalWorkingDays,MaxWorkingHrs;
         public void CompanyEmpWage()
         {
-            Console.WriteLine("Enter company name");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter wage per hrs ");
-            WagePerHrs = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter total number of working days ");
-            TotalWorkingDays  =Convert.ToInt32 (Console.ReadLine());
-            Console.WriteLine("Enter maximum working hrs per month");
-            MaxWorkingHrs = Convert.ToInt32(Console.ReadLine());
-
-            for (int i = 0; i < TotalWorkingDays && this.TotalWorkingHrs <= MaxWorkingHrs ; i++)
+            Console.WriteLine("Enter number of company data you want to store ");
+            int num=Convert.ToInt32(Console.ReadLine());
+            while (num > 0)
             {
-            Random rand = new Random();
-            int EmpCheck = rand.Next(0, 3);
-                switch (EmpCheck)
+
+                Console.WriteLine("Enter company name");
+                string name = Console.ReadLine();
+                Console.WriteLine("Enter wage per hrs ");
+                WagePerHrs = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter total number of working days ");
+                TotalWorkingDays = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter maximum working hrs per month");
+                MaxWorkingHrs = Convert.ToInt32(Console.ReadLine());
+
+                for (int i = 0; i < TotalWorkingDays && this.TotalWorkingHrs <= MaxWorkingHrs; i++)
                 {
-                    case EMP_PRESENT:
-                        this.TotalWorkingHrs += FULL_DAY_HR;
-                        break;
+                    Random rand = new Random();
+                    int EmpCheck = rand.Next(0, 3);
+                    switch (EmpCheck)
+                    {
+                        case EMP_PRESENT:
+                            this.TotalWorkingHrs += FULL_DAY_HR;
+                            break;
 
-                    case EMP_PARTTIME_PRESENT:
-                        this.TotalWorkingHrs += PARTTIME_HR;
-                        break;
+                        case EMP_PARTTIME_PRESENT:
+                            this.TotalWorkingHrs += PARTTIME_HR;
+                            break;
 
-                    default:
-                        this.TotalWorkingHrs += 0;
-                        break;
+                        default:
+                            this.TotalWorkingHrs += 0;
+                            break;
+                    }
                 }
+                EmpTotalWage = TotalWorkingHrs * WagePerHrs;
+                Console.WriteLine(" Employee's total wage is " + EmpTotalWage);
+                num--;
             }
-            EmpTotalWage = TotalWorkingHrs * WagePerHrs;
-            Console.WriteLine(" Employee's total wage is "+ EmpTotalWage);
         }
     }
 }
